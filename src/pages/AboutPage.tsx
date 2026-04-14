@@ -1,6 +1,8 @@
+import styles from "./AboutPage.module.css";
+
 const AboutPage = () => {
   return (
-    <main className="about-page">
+    <main className={styles.aboutPage}>
       <h1>👋 Hola! Soc Alex!</h1>
       <p>
         Des que vaig descobrir que la realitat es pot explicar millor a través

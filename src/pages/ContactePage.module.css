@@ -1,0 +1,104 @@
+.heroOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0.8;
+  color: #fff;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.heroContent {
+  padding: 2rem;
+}
+
+.heroContent h1 {
+  font-size: 4rem;
+  margin: 0;
+  letter-spacing: 0.5rem;
+}
+
+.heroContent h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-top: 1rem;
+  opacity: 0.8;
+}
+
+.heroContent a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  border-bottom: 1px solid #fff;
+}
+
+.closeHero {
+  margin-top: 3rem;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 1rem 3rem;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.closeHero:hover {
+  background: #fff;
+  color: #000;
+}
+
+.contactLinks {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactLinks a {
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+.emailCopyGroup {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.copyNotification {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+@media (max-width: 768px) {
+  .heroContent h1 {
+    font-size: 3rem;
+  }
+
+  .heroContent p {
+    margin: 2rem;
+  }
+
+  .contactLinks {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

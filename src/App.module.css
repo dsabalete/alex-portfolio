@@ -1,0 +1,7 @@
+.app {
+  font-family: "BasierCircleMono", monospace;
+  font-size: 12px;
+  color: #333;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}

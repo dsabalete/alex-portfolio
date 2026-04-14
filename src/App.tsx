@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import "./index.css";
 import PageHeader from "./components/PageHeader";
 import PageFooter from "./components/PageFooter";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ContactePage from "./pages/ContactePage";
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <PageHeader />
 
       <Routes>

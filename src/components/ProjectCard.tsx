@@ -5,6 +5,8 @@ export interface ProjectCardProps {
   link: string;
 }
 
+import styles from "./ProjectCard.module.css";
+
 const ProjectCard = ({
   title,
   description,
@@ -14,9 +16,9 @@ const ProjectCard = ({
   const target = link.startsWith("http") ? "_blank" : "_self";
   const rel = target === "_blank" ? "noopener noreferrer" : undefined;
   return (
-    <div className="project-card">
-      <img src={imageUrl} alt={title} className="project-card-image" />
-      <div className="project-card-overlay">
+    <div className={styles.projectCard}>
+      <img src={imageUrl} alt={title} className={styles.projectCardImage} />
+      <div className={styles.projectCardOverlay}>
         <h3>{title}</h3>
         <p>{description}</p>
         <a href={link} target={target} rel={rel}>

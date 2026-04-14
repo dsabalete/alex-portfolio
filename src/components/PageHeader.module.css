@@ -1,0 +1,30 @@
+.navContainer {
+  background-color: #fff;
+  padding: 0.6rem;
+  color: #000;
+  display: flex;
+  justify-content: space-evenly;
+  text-transform: uppercase;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.navLinks a {
+  padding: 0.2rem 0.4rem;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  border: 1px solid #fff;
+}
+
+.navLinks a:hover {
+  border: 1px solid #000;
+}

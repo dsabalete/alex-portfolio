@@ -13,44 +13,26 @@
     },
     {
         "title": "Project Three",
-        "description": "A brief description of Project Three.",
-        "imageUrl": "https://picsum.photos/id/300/600/400",
-        "link": "#"
-    },
-    {
-        "title": "Project One",
-        "description": "A brief description of Project One.",
-        "imageUrl": "https://picsum.photos/id/400/600/400",
-        "link": "#"
-    },
-    {
-        "title": "Project Two",
-        "description": "A brief description of Project Two.",
-        "imageUrl": "https://picsum.photos/id/500/600/400",
-        "link": "#"
-    },
-    {
-        "title": "Project Three",
-        "description": "A brief description of Project Three.",
-        "imageUrl": "https://picsum.photos/id/600/600/400",
-        "link": "#"
-    },
-    {
-        "title": "Project One",
         "description": "A brief description of Project One.",
         "imageUrl": "https://picsum.photos/id/700/600/400",
         "link": "#"
     },
     {
-        "title": "Project Two",
+        "title": "Project Four",
         "description": "A brief description of Project Two.",
         "imageUrl": "https://picsum.photos/id/800/600/400",
         "link": "#"
     },
     {
-        "title": "Project Three",
-        "description": "A brief description of Project Three.",
+        "title": "Project Five",
+        "description": "A brief description of Project One.",
         "imageUrl": "https://picsum.photos/id/900/600/400",
+        "link": "#"
+    },
+    {
+        "title": "Project Six",
+        "description": "A brief description of Project Two.",
+        "imageUrl": "https://picsum.photos/id/1000/600/400",
         "link": "#"
     }
 ]

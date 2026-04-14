@@ -1,20 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const iconstyle = {
-  width: "24px",
-  height: "24px",
-  display: "inline-block",
-  verticalAlign: "middle",
-  marginRight: "2px",
-};
+import styles from "./ContactePage.module.css";
 
 const MailIcon = () => (
   <svg
     viewBox="0 0 24 24"
     aria-hidden="true"
     focusable="false"
-    style={iconstyle}
+    className={styles.icon}
   >
     <path
       d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zm0 2v.5l8 5.2 8-5.2V8l-8 5.2L4 8z"
@@ -28,7 +21,7 @@ const InstagramIcon = () => (
     viewBox="0 0 24 24"
     aria-hidden="true"
     focusable="false"
-    style={iconstyle}
+    className={styles.icon}
   >
     <path
       d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
@@ -98,12 +91,12 @@ const ContactePage = () => {
   };
 
   return (
-    <section className="hero-overlay">
-      <div className="hero-content">
+    <section className={styles.heroOverlay}>
+      <div className={styles.heroContent}>
         <h1>ALEX SABALETE</h1>
         <h2>Director · Editor · DOP</h2>
         <p>Creant històries visualment atractives que captiven l'audiència.</p>
-        <div className="contact-links">
+        <div className={styles.contactLinks}>
           <a
             href="https://www.instagram.com/alexsabalete/"
             target="_blank"
@@ -114,7 +107,7 @@ const ContactePage = () => {
             <InstagramIcon />
             @alexsabalete
           </a>
-          <div className="email-copy-group">
+          <div className={styles.emailCopyGroup}>
             <a
               href={`mailto:${email}`}
               aria-label="Enviar correu a Alex Sabalete"
@@ -125,13 +118,17 @@ const ContactePage = () => {
               {email}
             </a>
             {copyMessage && (
-              <p className="copy-notification" role="status" aria-live="polite">
+              <p
+                className={styles.copyNotification}
+                role="status"
+                aria-live="polite"
+              >
                 {copyMessage}
               </p>
             )}
           </div>
         </div>
-        <button className="close-hero" onClick={() => navigate("/")}>
+        <button className={styles.closeHero} onClick={() => navigate("/")}>
           tancar
         </button>
       </div>
