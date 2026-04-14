@@ -8,21 +8,14 @@ const AboutPage = () => {
   };
 
   return (
-    <main
-      className="main-content"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <section className="hero-section">
+    <main className="about-page">
+      <div className="hero-section">
         <h1>Sobre mi</h1>
         <p>Soc jo.</p>
         <button className="close-hero" onClick={handleBack}>
           Enrere
         </button>
-      </section>
+      </div>
     </main>
   );
 };
