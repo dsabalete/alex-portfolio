@@ -3,7 +3,7 @@ import projectsData from "../data/projects.json";
 
 const projects: ProjectCardProps[] = projectsData;
 
-const Home = () => {
+const HomePage = () => {
   return (
     <main className="main-content">
       {projects.map((project, index) => (
@@ -13,4 +13,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
