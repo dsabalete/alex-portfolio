@@ -8,7 +8,7 @@ const PageHeader = ({
       <div className="nav-container">
         <div className="nav-links">
           <a href="#inici">Alex Sabalete</a>
-          <a href="#projectes">Projectes</a>
+          {/* <a href="#projectes">Projectes</a> */}
           <a
             href="https://tercerespai.org/"
             target="_blank"
