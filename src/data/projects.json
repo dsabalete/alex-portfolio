@@ -1,9 +1,9 @@
 [
     {
-        "title": "Project One",
-        "description": "A brief description of Project One.",
-        "imageUrl": "https://picsum.photos/id/100/600/400",
-        "link": "#"
+        "title": "Tercerespai",
+        "description": "Club de cinema independent a Barcelona",
+        "imageUrl": "/tercerespai.png",
+        "link": "https://tercerespai.org"
     },
     {
         "title": "Project Two",
