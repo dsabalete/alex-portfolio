@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "BasierCircleMono";
+  src: url("/src/assets/fonts/basiercirclemono-regular-webfont.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  font-family: "BasierCircleMono", monospace;
+  font-size: 12px;
+  color: #333;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.nav-container {
+  background-color: #fff;
+  padding: 0.6rem 2rem;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  position: fixed;
+  width: 100%;
+  top: 0;
+
+  .nav-links a {
+    padding: 0.2rem 0.4rem;
+    margin-left: 2rem;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    border: 1px solid #fff;
+
+    &:hover {
+      border: 1px solid #000;
+    }
+  }
+}
+
+.main-content {
+  margin-top: 40px;
+}
+
+.footer {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  text-align: center;
+  color: #000;
+  width: fit-content;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
