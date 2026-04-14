@@ -3,7 +3,7 @@ const PageFooter = () => {
 
   return (
     <footer className="footer">
-      <div>© {currentYear} Alex Portfolio. All rights reserved.</div>
+      <div>© {currentYear} Alex Sabalete. All rights reserved.</div>
     </footer>
   );
 };

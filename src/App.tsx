@@ -7,16 +7,11 @@ import HeroSection from "./components/HeroSection";
 function App() {
   const [showHero, setShowHero] = useState(false);
 
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setShowHero(true);
-  };
-
   return (
     <div className="app">
-      <PageHeader onContactClick={handleContactClick} />
+      <PageHeader onContactClick={() => setShowHero(true)} />
 
-      {showHero && <HeroSection />}
+      {showHero && <HeroSection onEnter={() => setShowHero(false)} />}
 
       {/* Main Content */}
       <main className="main-content">
