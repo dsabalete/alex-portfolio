@@ -16,13 +16,6 @@ const PageHeader = ({
           >
             Tercer Espai
           </a>
-          <a
-            href="https://www.instagram.com/alexsabalete/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
           <a href="#contacte" onClick={onContactClick}>
             Contacte
           </a>

@@ -2,20 +2,20 @@ import { useState } from "react";
 import "./index.css";
 import PageHeader from "./components/PageHeader";
 import PageFooter from "./components/PageFooter";
-import HeroSection from "./components/HeroSection";
+import ContacteSection from "./components/ContacteSection";
 import ProjectCard, { type ProjectCardProps } from "./components/ProjectCard";
 import projectsData from "./data/projects.json";
 
 const projects: ProjectCardProps[] = projectsData;
 
 function App() {
-  const [showHero, setShowHero] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   return (
     <div className="app">
-      <PageHeader onContactClick={() => setShowHero(true)} />
+      <PageHeader onContactClick={() => setShowContact(true)} />
 
-      {showHero && <HeroSection onEnter={() => setShowHero(false)} />}
+      {showContact && <ContacteSection onEnter={() => setShowContact(false)} />}
 
       <main className="main-content">
         {projects.map((project, index) => (

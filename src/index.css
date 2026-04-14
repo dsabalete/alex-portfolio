@@ -136,6 +136,29 @@ body {
   margin-bottom: 1rem;
 }
 
+.contact-links {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+  a {
+    text-decoration: none;
+    border-bottom: 0;
+  }
+}
+
+.email-copy-group {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.copy-notification {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
