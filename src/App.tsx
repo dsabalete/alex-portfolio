@@ -1,14 +1,22 @@
+import { useState } from "react";
 import "./index.css";
 import PageHeader from "./components/PageHeader";
 import PageFooter from "./components/PageFooter";
 import HeroSection from "./components/HeroSection";
 
 function App() {
+  const [showHero, setShowHero] = useState(false);
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowHero(true);
+  };
+
   return (
     <div className="app">
-      <PageHeader />
+      <PageHeader onContactClick={handleContactClick} />
 
-      <HeroSection />
+      {showHero && <HeroSection />}
 
       {/* Main Content */}
       <main className="main-content">
