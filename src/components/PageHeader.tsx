@@ -1,22 +1,14 @@
-const PageHeader = ({
-  onContactClick,
-  onAboutClick,
-}: {
-  onContactClick: (e: React.MouseEvent) => void;
-  onAboutClick: (e: React.MouseEvent) => void;
-}) => {
+import { Link } from "react-router-dom";
+
+const PageHeader = () => {
   return (
     <nav>
       <div className="nav-container">
         <div className="nav-links">
-          <a href="">Alex Sabalete</a>
+          <Link to="/">Alex Sabalete</Link>
           {/* <a href="#projectes">Projectes</a> */}
-          <a href="#about" onClick={onAboutClick}>
-            About Me
-          </a>
-          <a href="#contacte" onClick={onContactClick}>
-            Contacte
-          </a>
+          <Link to="/about">Sobre mi</Link>
+          <Link to="/contacte">Contacte</Link>
         </div>
       </div>
     </nav>

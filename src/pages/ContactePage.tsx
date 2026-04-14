@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-interface ContacteSectionProps {
-  onEnter: () => void;
-}
+import { useNavigate } from "react-router-dom";
 
 const iconstyle = {
   width: "24px",
@@ -40,7 +37,8 @@ const InstagramIcon = () => (
   </svg>
 );
 
-const ContacteSection = ({ onEnter }: ContacteSectionProps) => {
+const ContactePage = () => {
+  const navigate = useNavigate();
   const email = "a.sabalete.p@gmail.com";
   const [copyMessage, setCopyMessage] = useState<string | null>(null);
   const timeoutRef = useRef<number | null>(null);
@@ -133,7 +131,7 @@ const ContacteSection = ({ onEnter }: ContacteSectionProps) => {
             )}
           </div>
         </div>
-        <button className="close-hero" onClick={onEnter}>
+        <button className="close-hero" onClick={() => navigate("/")}>
           tancar
         </button>
       </div>
@@ -141,4 +139,4 @@ const ContacteSection = ({ onEnter }: ContacteSectionProps) => {
   );
 };
 
-export default ContacteSection;
+export default ContactePage;

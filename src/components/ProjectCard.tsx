@@ -20,7 +20,7 @@ const ProjectCard = ({
         <h3>{title}</h3>
         <p>{description}</p>
         <a href={link} target={target} rel={rel}>
-          View Project
+          Veure el projecte
         </a>
       </div>
     </div>

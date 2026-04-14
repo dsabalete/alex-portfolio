@@ -1,36 +1,21 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./index.css";
 import PageHeader from "./components/PageHeader";
 import PageFooter from "./components/PageFooter";
-import ContacteSection from "./components/ContacteSection";
-import About from "./components/About";
-import ProjectCard, { type ProjectCardProps } from "./components/ProjectCard";
-import projectsData from "./data/projects.json";
-
-const projects: ProjectCardProps[] = projectsData;
+import Home from "./pages/Home";
+import AboutPage from "./pages/AboutPage";
+import ContactePage from "./pages/ContactePage";
 
 function App() {
-  const [showContact, setShowContact] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
-
   return (
     <div className="app">
-      <PageHeader
-        onContactClick={() => setShowContact(true)}
-        onAboutClick={() => setShowAbout(true)}
-      />
+      <PageHeader />
 
-      {showContact && <ContacteSection onEnter={() => setShowContact(false)} />}
-
-      {showAbout && <About onBackClick={() => setShowAbout(false)} />}
-
-      {!showAbout && (
-        <main className="main-content">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
-          ))}
-        </main>
-      )}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contacte" element={<ContactePage />} />
+      </Routes>
 
       <PageFooter />
     </div>
