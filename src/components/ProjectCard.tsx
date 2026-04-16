@@ -16,9 +16,15 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   const target = link.startsWith("http") ? "_blank" : "_self";
   const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+  
   return (
-    <div className={styles.projectCard}>
-      <img src={imageUrl} alt={title} className={styles.projectCardImage} />
+    <article className={styles.projectCard}>
+      <img 
+        src={imageUrl} 
+        alt={title} 
+        className={styles.projectCardImage}
+        loading="lazy"
+      />
       <div className={styles.projectCardOverlay}>
         <h3>{title}</h3>
         <p>{description}</p>
@@ -31,7 +37,7 @@ const ProjectCard = ({
           Veure el projecte
         </a>
       </div>
-    </div>
+    </article>
   );
 };
 
