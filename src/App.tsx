@@ -19,7 +19,10 @@ function App() {
     <div className={styles.app}>
       <PageHeader />
 
-      <div key={location.pathname} className={styles.routeTransition}>
+      <div
+        key={location.pathname}
+        className={`${styles.routeTransition} ${styles.routeContent}`}
+      >
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -27,7 +30,7 @@ function App() {
         </Routes>
       </div>
 
-      <PageFooter />
+      {location.pathname !== "/contacte" && <PageFooter />}
     </div>
   );
 }
