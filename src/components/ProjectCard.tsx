@@ -18,26 +18,26 @@ const ProjectCard = ({
   const rel = target === "_blank" ? "noopener noreferrer" : undefined;
   
   return (
-    <article className={styles.projectCard}>
-      <img 
-        src={imageUrl} 
-        alt={title} 
-        className={styles.projectCardImage}
-        loading="lazy"
-      />
-      <div className={styles.projectCardOverlay}>
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <a
-          href={link}
-          target={target}
-          rel={rel}
-          onClick={() => trackEvent("Project", "click", title)}
-        >
-          Veure el projecte
-        </a>
-      </div>
-    </article>
+    <a
+      href={link}
+      target={target}
+      rel={rel}
+      onClick={() => trackEvent("Project", "click", title)}
+      className={styles.projectCardLink}
+    >
+      <article className={styles.projectCard}>
+        <img 
+          src={imageUrl} 
+          alt={title} 
+          className={styles.projectCardImage}
+          loading="lazy"
+        />
+        <div className={styles.projectCardOverlay}>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+      </article>
+    </a>
   );
 };
 
