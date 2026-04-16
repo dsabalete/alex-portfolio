@@ -19,11 +19,13 @@ function App() {
     <div className={styles.app}>
       <PageHeader />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contacte" element={<ContactePage />} />
-      </Routes>
+      <div key={location.pathname} className={styles.routeTransition}>
+        <Routes location={location}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contacte" element={<ContactePage />} />
+        </Routes>
+      </div>
 
       <PageFooter />
     </div>
