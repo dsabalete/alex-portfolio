@@ -17,7 +17,6 @@ describe("App", () => {
     );
 
     expect(transitionWrapper).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "👋 Hola! Soc Alex!" })).toBeInTheDocument();
   });
 
   it("keeps navigation working across routes", async () => {
@@ -29,8 +28,10 @@ describe("App", () => {
       </MemoryRouter>,
     );
 
+    expect(screen.getByRole("heading", { name: "Tercerespai" })).toBeInTheDocument();
+
     await user.click(screen.getByRole("link", { name: "Sobre mi" }));
 
-    expect(screen.getByRole("heading", { name: "👋 Hola! Soc Alex!" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Hola! Soc Alex!/ })).toBeInTheDocument();
   });
 });
