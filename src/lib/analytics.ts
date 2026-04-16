@@ -1,8 +1,9 @@
 import ReactGA from "react-ga4";
 
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+const getGA_MEASUREMENT_ID = () => import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 export const initAnalytics = () => {
+  const GA_MEASUREMENT_ID = getGA_MEASUREMENT_ID();
   if (GA_MEASUREMENT_ID) {
     ReactGA.initialize(GA_MEASUREMENT_ID, {
       testMode: import.meta.env.DEV,
@@ -11,6 +12,7 @@ export const initAnalytics = () => {
 };
 
 export const trackPageView = (path: string) => {
+  const GA_MEASUREMENT_ID = getGA_MEASUREMENT_ID();
   if (GA_MEASUREMENT_ID) {
     ReactGA.send({ hitType: "pageview", page: path });
   }
@@ -21,6 +23,7 @@ export const trackEvent = (
   action: string,
   label?: string
 ) => {
+  const GA_MEASUREMENT_ID = getGA_MEASUREMENT_ID();
   if (GA_MEASUREMENT_ID) {
     ReactGA.event({ category, action, label });
   }
