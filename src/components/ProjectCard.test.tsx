@@ -45,17 +45,17 @@ describe("ProjectCard", () => {
   it("should link to external project correctly", () => {
     renderWithRouter(<ProjectCard {...mockProject} />);
 
-    const link = screen.getByText("Veure el projecte").closest("a");
+    const link = screen.getByText("Test Project").closest("a");
     expect(link).toHaveAttribute("href", mockProject.link);
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  it("should track event on button click", () => {
+  it("should track event on card click", () => {
     renderWithRouter(<ProjectCard {...mockProject} />);
 
-    const clickButton = screen.getByText("Veure el projecte");
-    fireEvent.click(clickButton);
+    const cardElement = screen.getByText("Test Project");
+    fireEvent.click(cardElement);
 
     expect(mockEvent).toHaveBeenCalledWith(
       "Project",
