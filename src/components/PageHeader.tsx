@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./PageHeader.module.css";
 
 const PageHeader = () => {
@@ -7,11 +7,11 @@ const PageHeader = () => {
       <nav aria-label="Principal">
         <div className={styles.navContainer}>
           <div className={styles.navLinks}>
-            <Link to="/" aria-current="page">
+            <NavLink to="/" end>
               Alex Sabalete
-            </Link>
-            <Link to="/about">Sobre mi</Link>
-            <Link to="/contacte">Contacte</Link>
+            </NavLink>
+            <NavLink to="/about">Sobre mi</NavLink>
+            <NavLink to="/contacte">Contacte</NavLink>
           </div>
         </div>
       </nav>
