@@ -6,6 +6,10 @@
   margin-top: 40px;
 }
 
+.projectsContainer {
+  display: contents;
+}
+
 @media (max-width: 768px) {
   .mainContent {
     grid-template-columns: 1fr;

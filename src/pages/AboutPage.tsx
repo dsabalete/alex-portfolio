@@ -3,31 +3,33 @@ import styles from "./AboutPage.module.css";
 const AboutPage = () => {
   return (
     <main className={styles.aboutPage}>
-      <h1>👋 Hola! Soc Alex!</h1>
-      <p>
-        Des que vaig descobrir que la realitat es pot explicar millor a través
-        d'una lent, el cinema ha estat la meva brúixola. Com a estudiant de
-        <strong>Comunicació i Multimèdia</strong>, he après que una bona idea
-        necessita una execució tècnica impecable per transcendir.
-      </p>
-      <p>
-        No m'interessa només fer vídeos; vull crear{" "}
-        <strong>experiències</strong>. Crec que el sector audiovisual està en un
-        moment de canvi constant i vull ser part d'aquells que s'atreveixen a
-        innovar. El meu enfocament combina:{" "}
-      </p>
+      <aside className={styles.sidebar}>
+        <div className={styles.sidebarImages}>
+          <img
+            src="https://res.cloudinary.com/dnclrisd7/image/upload/v1782419405/730570102_1006243568702507_7690870770292074438_n_znmxji.jpg"
+            alt="About me image"
+          />
+        </div>
+      </aside>
+      <section className={styles.mainContent}>
+        <h1>Jo</h1>
+        <p>
+          Entusiasta de l’audivisual amb ganes de treballar amb tot allò que
+          implica contar històries dirigint, rodant i editant vídeos. Pura
+          velocitat, sensibilitat visual i la il·lusió de fer una bona feina.
+        </p>
+        <p>
+          Estic per pujar-me a totes les aventures possibles i per aprendre
+          creixent dels errors, de les victòries, dels artistes, de la moda,
+          dels companys que m’han rodejat i sobretot, de la llum.
+        </p>
 
-      <ul>
-        <li>
-          <strong>Narrativa cinematogràfica</strong> clàssica.
-        </li>
-        <li>
-          <strong>Noves tecnologies</strong> multimèdia.
-        </li>
-        <li>
-          Una obsessió pel <strong>detall visual</strong> i l'impacte emocional.
-        </li>
-      </ul>
+        <p>
+          Sempre que pugui, m’embrutaré les mans. Mentre els valors, la visió i
+          l'economia caminin junts, dic que sí i a fer que les coses passin.
+          Amor pel treball, honestitat i sempre intentant fer-ho bé.
+        </p>
+      </section>
     </main>
   );
 };

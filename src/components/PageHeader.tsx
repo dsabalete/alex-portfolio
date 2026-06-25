@@ -8,7 +8,7 @@ const PageHeader = () => {
         <div className={styles.navContainer}>
           <div className={styles.navLinks}>
             <NavLink to="/" end>
-              Alex Sabalete
+              Àlex Sabalete
             </NavLink>
             <NavLink to="/about">Sobre mi</NavLink>
             <NavLink to="/contacte">Contacte</NavLink>
