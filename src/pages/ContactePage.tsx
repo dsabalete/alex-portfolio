@@ -93,9 +93,8 @@ const ContactePage = () => {
   return (
     <section className={styles.heroOverlay}>
       <div className={styles.heroContent}>
-        <h1>ALEX SABALETE</h1>
+        <h1>ÀLEX SABALETE</h1>
         <h2>Director · Editor · DOP</h2>
-        <p>Creant històries visualment atractives que captiven l'audiència.</p>
         <div className={styles.contactLinks}>
           <a
             href="https://www.instagram.com/alexsabalete/"
