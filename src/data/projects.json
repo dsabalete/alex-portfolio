@@ -1,35 +1,35 @@
 [
     {
-        "title": "Curse",
-        "description": "Pending description for Curse.",
+        "title": "OF",
+        "description": "Videoclip per Fortuna",
         "imageUrl": "https://res.cloudinary.com/dnclrisd7/image/upload/v1782410417/portada_curse_n0iafx.jpg",
         "videoUrl": "https://res.cloudinary.com/dnclrisd7/video/upload/v1782407135/Cursepreview_wbd0nb.mp4",
         "link": "https://youtu.be/6nHWDTJlseI?si=7QwGs_sjpN1b5PXA"
     },
     {
-        "title": "La Gàbia de curse",
-        "description": "Pending description for La Gàbia de curse.",
+        "title": "Way off",
+        "description": "El que no va entrar al videoclip de OF",
         "imageUrl": "https://res.cloudinary.com/dnclrisd7/image/upload/v1782410435/portadagaviacurse_jxixz1.jpg",
         "videoUrl": "https://res.cloudinary.com/dnclrisd7/video/upload/v1782407137/Previewlagaviadecursed_gbhcpq.mp4",
         "link": "https://res.cloudinary.com/dnclrisd7/video/upload/v1782407137/Previewlagaviadecursed_gbhcpq.mp4"
     },
     {
         "title": "Nightshot",
-        "description": "A brief description of Nightshot.",
+        "description": "",
         "imageUrl": "https://res.cloudinary.com/dnclrisd7/image/upload/v1782410438/portadanightshot_f3v1xm.jpg",
         "videoUrl": "https://res.cloudinary.com/dnclrisd7/video/upload/v1782407137/previewnightshot_ugqhgw.mp4",
         "link": "https://youtu.be/b7GNbn2JV24"
     },
     {
         "title": "Caballo Blanco",
-        "description": "A brief description of Caballo Blanco.",
+        "description": "",
         "imageUrl": "https://res.cloudinary.com/dnclrisd7/image/upload/v1782410397/portada_caballo_blanco_vljdag.jpg",
         "videoUrl": "https://res.cloudinary.com/dnclrisd7/video/upload/v1782407134/previewcaballoblanco_xmxfk9.mp4",
         "link": "https://youtu.be/CrVgMHwsacU"
     },
     {
         "title": "MOMENTO WOK",
-        "description": "A brief description of MOMENTO WOK.",
+        "description": "",
         "imageUrl": "https://res.cloudinary.com/dnclrisd7/image/upload/v1782410436/portadamomentowok_cfa5kj.jpg",
         "videoUrl": "https://res.cloudinary.com/dnclrisd7/video/upload/v1782407134/Momentowokpreview_mmafjh.mp4",
         "link": "https://youtu.be/xOVcOorRX6s"
