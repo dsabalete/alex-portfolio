@@ -107,6 +107,12 @@
     flex-wrap: nowrap;
   }
 
+  .sidebarImages img {
+    max-width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
   .sidebarImages::-webkit-scrollbar {
     height: 6px;
     width: auto;
