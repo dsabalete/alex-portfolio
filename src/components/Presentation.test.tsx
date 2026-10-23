@@ -17,6 +17,20 @@ describe("Presentation", () => {
     expect(video).toHaveProperty("muted", true);
   });
 
+  // Validates: Requirements 3.5 (Property 9: Preservation - Video Configuration Attributes)
+  it("should set the poster attribute to the expected Cloudinary URL", () => {
+    render(<Presentation />);
+
+    const video = document.querySelector("video");
+    expect(video).toBeInTheDocument();
+    // Existing tests check loop, muted, and playsInline on the Presentation
+    // video. This verifies the poster image configuration is preserved.
+    expect(video).toHaveAttribute(
+      "poster",
+      "https://res.cloudinary.com/dnclrisd7/video/upload/so_0,w_1200,h_630,c_fill,q_auto,f_jpg/v1782407137/portadaportfolio_edi1pf.jpg",
+    );
+  });
+
   it("should trigger play on mouse enter and pause on mouse leave", () => {
     const playMock = vi.fn().mockResolvedValue(undefined);
     const pauseMock = vi.fn();
