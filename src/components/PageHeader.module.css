@@ -21,10 +21,29 @@
   text-decoration: none;
   color: #000;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: all 0.2s ease;
   border: 1px solid #fff;
 }
 
 .navLinks a:hover {
   border: 1px solid #000;
+}
+
+.navLinks a:global(.active),
+.navLinks a[aria-current="page"] {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.navLinks a:global(.active):hover,
+.navLinks a[aria-current="page"]:hover {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.navLinks a:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
 }

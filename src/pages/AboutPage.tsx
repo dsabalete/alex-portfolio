@@ -1,6 +1,13 @@
+import { useSEO } from "../hooks/useSEO";
 import styles from "./AboutPage.module.css";
 
 const AboutPage = () => {
+  useSEO({
+    title: "Sobre mi — Àlex Sabalete | Director, Editor & DOP",
+    description:
+      "Sobre Àlex Sabalete — Director, Editor i Director de Fotografia (DOP). Passió per explicar històries a través del rodatge, el muntatge i la llum.",
+  });
+
   return (
     <main className={styles.aboutPage}>
       <aside className={styles.sidebar}>

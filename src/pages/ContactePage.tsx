@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSEO } from "../hooks/useSEO";
 import styles from "./ContactePage.module.css";
 
 const MailIcon = () => (
@@ -45,6 +46,12 @@ const CopyIcon = () => (
 );
 
 const ContactePage = () => {
+  useSEO({
+    title: "Contacte — Àlex Sabalete | Director, Editor & DOP",
+    description:
+      "Contacta amb Àlex Sabalete (Director · Editor · DOP). Informació de contacte, correu i Instagram per a nous projectes i col·laboracions.",
+  });
+
   const navigate = useNavigate();
   const email = "a.sabalete.p@gmail.com";
   const [copyMessage, setCopyMessage] = useState<string | null>(null);

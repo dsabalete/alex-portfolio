@@ -55,4 +55,16 @@ describe("PageHeader", () => {
     expect(homeLink).not.toHaveAttribute("aria-current");
     expect(contactLink).not.toHaveAttribute("aria-current");
   });
+
+  it("should apply active class to current route NavLink", () => {
+    renderWithRouter(<PageHeader />, ["/about"]);
+
+    const homeLink = screen.getByText("Àlex Sabalete").closest("a");
+    const aboutLink = screen.getByText("Sobre mi").closest("a");
+    const contactLink = screen.getByText("Contacte").closest("a");
+
+    expect(aboutLink).toHaveClass("active");
+    expect(homeLink).not.toHaveClass("active");
+    expect(contactLink).not.toHaveClass("active");
+  });
 });
