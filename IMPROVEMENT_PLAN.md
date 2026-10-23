@@ -232,6 +232,18 @@ This document outlines the key areas for improvement in the React portfolio webs
 
 ---
 
+## 8. Accessibility (a11y) & UX Interaction Patterns
+
+### Status: Implemented (October 2026)
+
+- **Email interaction in ContactePage**: Replaced `preventDefault`-only clipboard behavior with a proper `mailto:` link (opens native mail client) plus an explicit "Copiar" button for clipboard copying. Both paths are accessible with `aria-label` and `aria-live` notification feedback.
+- **Modal overlay contrast**: Replaced `opacity: 0.8` on `.heroOverlay` with `background-color: rgba(0, 0, 0, 0.85)` and `backdrop-filter: blur(8px)`, preserving full text contrast inside the overlay.
+- **Active route indicator**: Added visual styles for `NavLink` `.active` class and `aria-current="page"` attribute in `PageHeader`, giving users clear feedback of the current page (inverted color scheme). Tests verify dynamic `aria-current` and `active` class assignment.
+- **Base font size**: Replaced fixed `12px` with `clamp(0.9rem, 2.5vw, 1rem)` for fluid typography that scales smoothly across devices without abrupt breakpoint jumps.
+- **Subtitle contrast**: Replaced `opacity: 0.8` on `.heroContent h2` with `color: rgba(255, 255, 255, 0.8)` for explicit, future-proof contrast handling that won't affect child elements.
+
+---
+
 ## Implementation Priority
 
 ### Phase 1: Critical Fixes (High Impact, Low Effort)
