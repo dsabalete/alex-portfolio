@@ -4,8 +4,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
-  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #fff;
   z-index: 9999;
   display: flex;
@@ -66,16 +67,49 @@
 .contactLinks a {
   text-decoration: none;
   border-bottom: 0;
+  display: inline-flex;
+  align-items: center;
 }
 
 .emailCopyGroup {
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.copyButton {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.25rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  background: #fff;
+  color: #000;
+}
+
+.copyIcon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .copyNotification {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -99,6 +133,11 @@
 
   .contactLinks {
     flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .emailCopyGroup {
+    flex-direction: row;
     gap: 0.5rem;
   }
 }

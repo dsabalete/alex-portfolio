@@ -10,8 +10,8 @@ const HomePage = () => {
     <main className={styles.mainContent}>
       <Presentation />
       <div className={styles.projectsContainer}>
-        {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
+        {projects.map((project) => (
+          <ProjectCard key={project.id || project.title} {...project} />
         ))}
       </div>
     </main>

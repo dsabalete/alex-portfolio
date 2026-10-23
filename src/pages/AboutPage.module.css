@@ -50,23 +50,6 @@
   background: #999;
 }
 
-.sidebarInfo {
-  padding: 0 0 2rem;
-  flex-shrink: 0;
-}
-
-.sidebarInfo h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.sidebarInfo p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #666;
-}
-
 .mainContent {
   flex: 1;
   min-width: 0;
@@ -120,16 +103,5 @@
 
   .sidebarImages::-webkit-scrollbar-thumb {
     background: #ccc;
-  }
-
-  .placeholderImage {
-    flex: 0 0 auto;
-    min-width: 0;
-    aspect-ratio: 3 / 4;
-    width: 120px;
-  }
-
-  .sidebarInfo {
-    padding-bottom: 0;
   }
 }

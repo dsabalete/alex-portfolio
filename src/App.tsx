@@ -5,6 +5,7 @@ import PageFooter from "./components/PageFooter";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ContactePage from "./pages/ContactePage";
+import NotFoundPage from "./pages/NotFoundPage";
 import { trackPageView } from "./lib/analytics";
 import styles from "./App.module.css";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contacte" element={<ContactePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
 

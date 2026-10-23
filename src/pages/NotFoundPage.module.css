@@ -1,0 +1,56 @@
+.notFoundPage {
+  min-height: calc(100vh - 47px - 128px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.content {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statusCode {
+  font-size: 5rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+}
+
+.description {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #666;
+}
+
+.homeLink {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.homeLink:hover,
+.homeLink:focus-visible {
+  background-color: #1a1a1a;
+  color: #f8f5f2;
+}

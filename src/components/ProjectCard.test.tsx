@@ -63,4 +63,33 @@ describe("ProjectCard", () => {
       "Test Project",
     );
   });
+
+  it("should render video element when videoUrl is provided and trigger play/pause on hover", () => {
+    const playMock = vi.fn().mockResolvedValue(undefined);
+    const pauseMock = vi.fn();
+    window.HTMLMediaElement.prototype.play = playMock;
+    window.HTMLMediaElement.prototype.pause = pauseMock;
+
+    const projectWithVideo = {
+      ...mockProject,
+      videoUrl: "/test-video.mp4",
+    };
+
+    renderWithRouter(<ProjectCard {...projectWithVideo} />);
+
+    const link = screen.getByText("Test Project").closest("a");
+    expect(link).toBeInTheDocument();
+
+    const video = document.querySelector("video");
+    expect(video).toBeInTheDocument();
+    expect(video).toHaveAttribute("poster", "/test-image.jpg");
+
+    if (link) {
+      fireEvent.mouseEnter(link);
+      expect(playMock).toHaveBeenCalled();
+
+      fireEvent.mouseLeave(link);
+      expect(pauseMock).toHaveBeenCalled();
+    }
+  });
 });

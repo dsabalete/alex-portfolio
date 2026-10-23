@@ -3,6 +3,7 @@
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background-color: #000;
+  border-radius: 8px;
 }
 
 .projectCardImage {
@@ -26,42 +27,98 @@
   left: 0;
   z-index: 2;
   opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
 .projectCard:hover .projectCardVideo,
 .projectCardLink:focus-visible .projectCardVideo,
-.projectCardLink:focus-within .projectCardVideo {
+.projectCardLink:focus-within .projectCardVideo,
+.projectCard[data-playing="true"] .projectCardVideo {
   opacity: 1;
 }
 
 .projectCardOverlay {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
   z-index: 3;
-  transition: opacity 0.3s ease, background 0.3s ease;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.45);
+  transition: background 0.35s ease;
+}
+
+/* Gradient scrim in the lower section to maintain high contrast behind text during playback */
+.projectCardOverlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 35%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.projectCardContent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  color: #fff;
+  z-index: 4;
+  box-sizing: border-box;
+  transition: top 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.projectCard:hover .projectCardOverlay,
+.projectCardLink:focus-visible .projectCardOverlay,
+.projectCardLink:focus-within .projectCardOverlay,
+.projectCard[data-playing="true"] .projectCardOverlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.projectCard:hover .projectCardOverlay::after,
+.projectCardLink:focus-visible .projectCardOverlay::after,
+.projectCardLink:focus-within .projectCardOverlay::after,
+.projectCard[data-playing="true"] .projectCardOverlay::after {
   opacity: 1;
 }
 
-.projectCard:hover .projectCardOverlay {
-  opacity: 0;
-  background: transparent;
+/* Gracefully slide content to the bottom during hover/active state */
+.projectCard:hover .projectCardContent,
+.projectCardLink:focus-visible .projectCardContent,
+.projectCardLink:focus-within .projectCardContent,
+.projectCard[data-playing="true"] .projectCardContent {
+  top: 100%;
+  transform: translateY(-100%);
 }
 
-.projectCardOverlay h3,
-.projectCardOverlay p {
+.projectCardContent h3 {
   margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-.projectCardOverlay p {
-  margin-top: 0.5rem;
+.projectCardContent p {
+  margin: 0;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  opacity: 0.92;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.projectCardContent p:empty {
+  display: none;
+  margin: 0;
 }
 
 .projectCardLink {
@@ -69,4 +126,5 @@
   width: 100%;
   height: 100%;
   text-decoration: none;
+  cursor: pointer;
 }

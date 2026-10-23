@@ -34,4 +34,15 @@ describe("App", () => {
 
     expect(screen.getByRole("heading", { name: "Jo" })).toBeInTheDocument();
   });
+
+  it("renders 404 page for unknown routes", () => {
+    render(
+      <MemoryRouter initialEntries={["/ruta-desconeguda"]}>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("heading", { level: 1, name: "404" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: "Pàgina no trobada" })).toBeInTheDocument();
+  });
 });

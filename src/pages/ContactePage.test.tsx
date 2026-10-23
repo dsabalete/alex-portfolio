@@ -74,5 +74,35 @@ describe('ContactePage', () => {
       expect(instagramLink).toBeInTheDocument();
       expect(instagramLink).toHaveAttribute('title', 'Instagram');
     });
+
+    it('should allow default mailto behavior without preventDefault on click', () => {
+      renderWithRouter(<ContactePage />);
+
+      const emailLink = screen.getByLabelText("Enviar correu a Alex Sabalete");
+      const clickEvent = new MouseEvent('click', { cancelable: true, bubbles: true });
+      emailLink.dispatchEvent(clickEvent);
+
+      expect(clickEvent.defaultPrevented).toBe(false);
+    });
+
+    it('should render explicit copy button and copy email to clipboard', async () => {
+      Object.defineProperty(window, 'isSecureContext', { value: true, configurable: true });
+      const writeTextMock = vi.fn().mockResolvedValue(undefined);
+      Object.assign(navigator, {
+        clipboard: {
+          writeText: writeTextMock,
+        },
+      });
+
+      renderWithRouter(<ContactePage />);
+
+      const copyButton = screen.getByRole('button', { name: /copiar correu/i });
+      expect(copyButton).toBeInTheDocument();
+
+      fireEvent.click(copyButton);
+
+      expect(writeTextMock).toHaveBeenCalledWith('a.sabalete.p@gmail.com');
+      expect(await screen.findByText('Correu copiat al porta-papers')).toBeInTheDocument();
+    });
   });
 });

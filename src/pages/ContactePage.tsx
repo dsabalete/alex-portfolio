@@ -30,6 +30,20 @@ const InstagramIcon = () => (
   </svg>
 );
 
+const CopyIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    className={styles.copyIcon}
+  >
+    <path
+      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 const ContactePage = () => {
   const navigate = useNavigate();
   const email = "a.sabalete.p@gmail.com";
@@ -77,11 +91,7 @@ const ContactePage = () => {
     }, 2000);
   };
 
-  const handleEmailClick = async (
-    event: React.MouseEvent<HTMLAnchorElement>,
-  ) => {
-    event.preventDefault();
-
+  const handleCopyEmail = async () => {
     try {
       await copyEmailToClipboard();
       showNotification("Correu copiat al porta-papers");
@@ -111,11 +121,20 @@ const ContactePage = () => {
               href={`mailto:${email}`}
               aria-label="Enviar correu a Alex Sabalete"
               title="Correu"
-              onClick={handleEmailClick}
             >
               <MailIcon />
               {email}
             </a>
+            <button
+              type="button"
+              className={styles.copyButton}
+              onClick={handleCopyEmail}
+              aria-label="Copiar correu al porta-papers"
+              title="Copiar correu"
+            >
+              <CopyIcon />
+              <span>Copiar</span>
+            </button>
             {copyMessage && (
               <p
                 className={styles.copyNotification}
