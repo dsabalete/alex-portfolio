@@ -136,32 +136,34 @@ This document outlines the key areas for improvement in the React portfolio webs
 
 ## 5. SEO Optimization
 
-### Issues Identified
-- No meta description
-- Missing Open Graph tags
-- No structured data
-- Limited semantic markup
+### Status: Implemented (October 2026)
+- Meta description, keywords, author, and theme-color added to `index.html`.
+- Full Open Graph metadata (`og:title`, `og:description`, `og:image`, `og:type`, `og:site_name`, `og:locale`) implemented with Cloudinary poster (1200x630).
+- Twitter Card tags (`summary_large_image`) implemented.
+- Schema.org JSON-LD structured data with `@graph` connecting `Person` (Àlex Sabalete), `WebSite`, and `ItemList` of `CreativeWork` portfolio projects.
+- Dynamic page title and meta tag management via `useSEO` hook on route changes (`HomePage`, `AboutPage`, `ContactePage`).
+- Video poster preview added to hero Presentation component.
 
 ### Detailed Improvements
 
-#### 5.1 Meta Description
+#### 5.1 Meta Description (Completed)
 **Description**: Add compelling meta description for search engine results.
-**Implementation**: Create description tag, optimize length, include keywords.
+**Implementation**: Added comprehensive description tag in index.html and dynamic updates via useSEO hook.
 **Impact**: Better click-through rates from search results.
 
-#### 5.2 Open Graph Tags
+#### 5.2 Open Graph Tags (Completed)
 **Description**: Add Open Graph tags for social media sharing.
-**Implementation**: Create og:title, og:description, og:image tags, add Twitter Card tags.
-**Impact**: Better social media presentation, increased sharing.
+**Implementation**: Added og:title, og:description, og:image, og:type, og:site_name, og:locale and Twitter Card tags with high-res Cloudinary poster.
+**Impact**: Better social media presentation across WhatsApp, Telegram, LinkedIn, Instagram, X/Twitter.
 
-#### 5.3 Structured Data
+#### 5.3 Structured Data (Completed)
 **Description**: Add JSON-LD structured data for portfolio markup.
-**Implementation**: Create Person schema, add work examples, implement breadcrumb markup.
-**Impact**: Better search engine understanding, potential rich snippets.
+**Implementation**: Created Person, WebSite, and CreativeWork ItemList Schema.org graph in index.html.
+**Impact**: Better search engine understanding and rich snippets eligibility.
 
-#### 5.4 Semantic Markup Enhancement
+#### 5.4 Semantic Markup Enhancement (Completed)
 **Description**: Improve semantic HTML structure for better SEO.
-**Implementation**: Add proper heading hierarchy, use article elements, implement microdata.
+**Implementation**: Added proper heading hierarchy, navigation landmarks, and article elements.
 **Impact**: Better search engine crawling, improved accessibility.
 
 ---

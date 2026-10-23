@@ -91,6 +91,7 @@ const Presentation = () => {
           <video
             ref={videoRef}
             className={styles.video}
+            poster="https://res.cloudinary.com/dnclrisd7/video/upload/so_0,w_1200,h_630,c_fill,q_auto,f_jpg/v1782407137/portadaportfolio_edi1pf.jpg"
             preload="metadata"
             loop
             muted

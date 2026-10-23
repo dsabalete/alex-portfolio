@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 
@@ -122,14 +122,16 @@ describe("ProjectCard", () => {
     const observeMock = vi.fn();
     const disconnectMock = vi.fn();
 
-    window.IntersectionObserver = vi.fn().mockImplementation((callback) => {
-      observerCallback = callback;
-      return {
-        observe: observeMock,
-        disconnect: disconnectMock,
-        unobserve: vi.fn(),
-      };
-    });
+    class MockIntersectionObserver {
+      constructor(callback: (entries: IntersectionObserverEntry[]) => void) {
+        observerCallback = callback;
+      }
+      observe = observeMock;
+      disconnect = disconnectMock;
+      unobserve = vi.fn();
+    }
+
+    window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver;
 
     window.matchMedia = vi.fn().mockImplementation((query) => ({
       matches: query.includes("hover: none") || query.includes("max-width: 768px"),
@@ -154,22 +156,26 @@ describe("ProjectCard", () => {
     expect(observeMock).toHaveBeenCalled();
 
     // Entering viewport
-    observerCallback([
-      {
-        isIntersecting: true,
-        intersectionRatio: 0.6,
-      } as unknown as IntersectionObserverEntry,
-    ]);
+    act(() => {
+      observerCallback([
+        {
+          isIntersecting: true,
+          intersectionRatio: 0.6,
+        } as unknown as IntersectionObserverEntry,
+      ]);
+    });
 
     expect(playMock).toHaveBeenCalled();
 
     // Leaving viewport
-    observerCallback([
-      {
-        isIntersecting: false,
-        intersectionRatio: 0.1,
-      } as unknown as IntersectionObserverEntry,
-    ]);
+    act(() => {
+      observerCallback([
+        {
+          isIntersecting: false,
+          intersectionRatio: 0.1,
+        } as unknown as IntersectionObserverEntry,
+      ]);
+    });
 
     expect(pauseMock).toHaveBeenCalled();
   });

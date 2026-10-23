@@ -1,11 +1,18 @@
 .app {
   font-family: "BasierCircleMono", monospace;
-  font-size: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
   color: #333;
   background-color: #f5f5f5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .app {
+    font-size: 0.95rem;
+  }
 }
 
 .routeContent {
