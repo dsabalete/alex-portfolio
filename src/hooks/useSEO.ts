@@ -146,7 +146,8 @@ export function useSEO(options: SEOOptions = {}) {
     };
 
     // 1. Meta description
-    setMetaContent('meta[name="description"]', description ?? "", "name", "description");
+    const activeDescription = description || DEFAULT_SEO.description;
+    setMetaContent('meta[name="description"]', activeDescription, "name", "description");
 
     // 2. og:title
     setMetaContent('meta[property="og:title"]', activeTitle, "property", "og:title");
@@ -154,7 +155,7 @@ export function useSEO(options: SEOOptions = {}) {
     // 3. og:description
     setMetaContent(
       "meta[property='og:description']",
-      description ?? "",
+      activeDescription,
       "property",
       "og:description"
     );
@@ -165,7 +166,7 @@ export function useSEO(options: SEOOptions = {}) {
     // 5. twitter:description
     setMetaContent(
       "meta[name='twitter:description']",
-      description ?? "",
+      activeDescription,
       "name",
       "twitter:description"
     );

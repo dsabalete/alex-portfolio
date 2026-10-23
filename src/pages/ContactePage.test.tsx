@@ -93,6 +93,7 @@ describe('ContactePage', () => {
           writeText: writeTextMock,
         },
       });
+      const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {});
 
       renderWithRouter(<ContactePage />);
 
@@ -102,7 +103,8 @@ describe('ContactePage', () => {
       fireEvent.click(copyButton);
 
       expect(writeTextMock).toHaveBeenCalledWith('a.sabalete.p@gmail.com');
-      expect(await screen.findByText('Correu copiat al porta-papers')).toBeInTheDocument();
+      expect(alertMock).toHaveBeenCalledWith('Copiat!');
+      alertMock.mockRestore();
     });
   });
 });

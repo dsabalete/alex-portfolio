@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useSEO, generateSEOOptions } from "../hooks/useSEO";
 import { generateAllSchemas } from "../lib/structuredData";
 import styles from "./ContactePage.module.css";
 
 const ContactePage = () => {
+  const navigate = useNavigate();
   // Generate SEO options for the /contacte route
   const seoOptions = generateSEOOptions("/contacte", undefined, undefined, undefined);
 
@@ -64,7 +66,10 @@ const ContactePage = () => {
             <button
               type="button"
               className={styles.copyButton}
-              onClick={() => alert("Copied!")}
+              onClick={() => {
+                navigator.clipboard.writeText("a.sabalete.p@gmail.com");
+                alert("Copiat!");
+              }}
               aria-label="Copiar correu al porta-papers"
               title="Copiar correu"
             >
@@ -72,7 +77,7 @@ const ContactePage = () => {
             </button>
           </div>
         </div>
-        <button className={styles.closeHero} onClick={() => window.location.hash = ""}>
+        <button className={styles.closeHero} onClick={() => navigate("/")}>
           tancar
         </button>
       </div>
