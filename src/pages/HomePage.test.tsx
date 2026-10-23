@@ -27,6 +27,8 @@ describe('HomePage', () => {
     renderWithRouter(<HomePage />);
 
     // Check that project titles from the data are rendered
-    expect(screen.getByText('Tercerespai')).toBeInTheDocument();
+    expect(screen.getByText('OF')).toBeInTheDocument();
+    expect(screen.getByText('Way off')).toBeInTheDocument();
+    expect(screen.getByText('Nightshot')).toBeInTheDocument();
   });
 });

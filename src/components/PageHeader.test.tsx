@@ -16,7 +16,7 @@ describe("PageHeader", () => {
   it("should render navigation links correctly", () => {
     renderWithRouter(<PageHeader />);
 
-    expect(screen.getByText("Alex Sabalete")).toBeInTheDocument();
+    expect(screen.getByText("Àlex Sabalete")).toBeInTheDocument();
     expect(screen.getByText("Sobre mi")).toBeInTheDocument();
     expect(screen.getByText("Contacte")).toBeInTheDocument();
   });
@@ -27,7 +27,7 @@ describe("PageHeader", () => {
     const links = screen.getAllByRole("link");
     expect(links).toHaveLength(3);
 
-    const homeLink = screen.getByText("Alex Sabalete").closest("a");
+    const homeLink = screen.getByText("Àlex Sabalete").closest("a");
     expect(homeLink).toHaveAttribute("href", "/");
 
     const aboutLink = screen.getByText("Sobre mi").closest("a");
@@ -47,7 +47,7 @@ describe("PageHeader", () => {
   it("should set aria-current dynamically based on current route", () => {
     renderWithRouter(<PageHeader />, ["/about"]);
 
-    const homeLink = screen.getByText("Alex Sabalete").closest("a");
+    const homeLink = screen.getByText("Àlex Sabalete").closest("a");
     const aboutLink = screen.getByText("Sobre mi").closest("a");
     const contactLink = screen.getByText("Contacte").closest("a");
 

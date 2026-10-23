@@ -28,10 +28,10 @@ describe("App", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("heading", { name: "Tercerespai" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "OF" })).toBeInTheDocument();
 
     await user.click(screen.getByRole("link", { name: "Sobre mi" }));
 
-    expect(screen.getByRole("heading", { name: /Hola! Soc Alex!/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Jo" })).toBeInTheDocument();
   });
 });

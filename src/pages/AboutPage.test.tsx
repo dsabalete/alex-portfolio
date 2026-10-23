@@ -16,33 +16,31 @@ describe('AboutPage', () => {
     expect(main).toHaveClass(/aboutPage/);
   });
 
-  it('should display greeting message', () => {
+  it('should display title heading', () => {
     renderWithRouter(<AboutPage />);
 
-    const greeting = screen.getByText(/Hola! Soc Alex!/);
-    expect(greeting).toBeInTheDocument();
+    const title = screen.getByRole('heading', { level: 1, name: 'Jo' });
+    expect(title).toBeInTheDocument();
   });
 
-  it('should display education information', () => {
+  it('should display bio description', () => {
     renderWithRouter(<AboutPage />);
 
-    const education = screen.getByText(/Comunicació i Multimèdia/);
-    expect(education).toBeInTheDocument();
+    expect(
+      screen.getByText(/Entusiasta de l’audivisual/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/pujar-me a totes les aventures possibles/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Sempre que pugui, m’embrutaré les mans/),
+    ).toBeInTheDocument();
   });
 
-  it('should display passion and technology sections', () => {
+  it('should render about image', () => {
     renderWithRouter(<AboutPage />);
 
-    const passion = screen.getByText(/experiències/);
-    expect(passion).toBeInTheDocument();
-
-    const cinema = screen.getByText(/Narrativa cinematogràfica/);
-    expect(cinema).toBeInTheDocument();
-
-    const newTech = screen.getByText(/Noves tecnologies/);
-    expect(newTech).toBeInTheDocument();
-
-    const details = screen.getByText(/detall visual/);
-    expect(details).toBeInTheDocument();
+    const image = screen.getByAltText('About me image');
+    expect(image).toBeInTheDocument();
   });
 });

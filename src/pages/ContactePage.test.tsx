@@ -29,9 +29,8 @@ describe('ContactePage', () => {
   it('should render hero overlay with title', () => {
     renderWithRouter(<ContactePage />);
 
-    expect(screen.getByText('ALEX SABALETE')).toBeInTheDocument();
-    expect(screen.getByText('Director · Editor · DOP')).toBeInTheDocument();
-    expect(screen.getByText("Creant històries visualment atractives que captiven l'audiència.")).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'ÀLEX SABALETE' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Director · Editor · DOP' })).toBeInTheDocument();
   });
 
   it('should render contact links', () => {
