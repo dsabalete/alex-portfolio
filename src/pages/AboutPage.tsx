@@ -1,12 +1,20 @@
-import { useSEO } from "../hooks/useSEO";
+import { useSEO, generateSEOOptions } from "../hooks/useSEO";
+import { generateAllSchemas } from "../lib/structuredData";
 import styles from "./AboutPage.module.css";
 
 const AboutPage = () => {
+  // Generate SEO options for the /about route - uses profile photo as OG image
+  const seoOptions = generateSEOOptions("/about", undefined, undefined, undefined);
+
   useSEO({
-    title: "Sobre mi — Àlex Sabalete | Director, Editor & DOP",
-    description:
-      "Sobre Àlex Sabalete — Director, Editor i Director de Fotografia (DOP). Passió per explicar històries a través del rodatge, el muntatge i la llum.",
+    title: seoOptions.title,
+    description: seoOptions.description,
+    ogImage: seoOptions.ogImage,
+    canonicalPath: seoOptions.canonicalPath,
   });
+
+  // Generate JSON-LD for /about route (Person + Website + AboutPage schema)
+  const { mainScript, fallback } = generateAllSchemas("/about");
 
   return (
     <main className={styles.aboutPage}>
@@ -37,6 +45,10 @@ const AboutPage = () => {
           Amor pel treball, honestitat i sempre intentant fer-ho bé.
         </p>
       </section>
+
+      {/* SEO JSON-LD for About page */}
+      {mainScript}
+      {fallback}
     </main>
   );
 };

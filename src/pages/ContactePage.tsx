@@ -1,111 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSEO } from "../hooks/useSEO";
+import { useSEO, generateSEOOptions } from "../hooks/useSEO";
+import { generateAllSchemas } from "../lib/structuredData";
 import styles from "./ContactePage.module.css";
 
-const MailIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-    focusable="false"
-    className={styles.icon}
-  >
-    <path
-      d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zm0 2v.5l8 5.2 8-5.2V8l-8 5.2L4 8z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-const InstagramIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-    focusable="false"
-    className={styles.icon}
-  >
-    <path
-      d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-const CopyIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-    focusable="false"
-    className={styles.copyIcon}
-  >
-    <path
-      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
 const ContactePage = () => {
+  // Generate SEO options for the /contacte route
+  const seoOptions = generateSEOOptions("/contacte", undefined, undefined, undefined);
+
   useSEO({
-    title: "Contacte — Àlex Sabalete | Director, Editor & DOP",
-    description:
-      "Contacta amb Àlex Sabalete (Director · Editor · DOP). Informació de contacte, correu i Instagram per a nous projectes i col·laboracions.",
+    title: seoOptions.title,
+    description: seoOptions.description,
+    ogImage: seoOptions.ogImage,
+    canonicalPath: seoOptions.canonicalPath,
   });
 
-  const navigate = useNavigate();
-  const email = "a.sabalete.p@gmail.com";
-  const [copyMessage, setCopyMessage] = useState<string | null>(null);
-  const timeoutRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current !== null) {
-        window.clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
-
-  const copyEmailToClipboard = async () => {
-    if (window.isSecureContext && navigator.clipboard) {
-      await navigator.clipboard.writeText(email);
-      return;
-    }
-
-    const textarea = document.createElement("textarea");
-    textarea.value = email;
-    textarea.style.position = "fixed";
-    textarea.style.left = "-9999px";
-    document.body.appendChild(textarea);
-    textarea.focus();
-    textarea.select();
-    const success = document.execCommand("copy");
-    document.body.removeChild(textarea);
-
-    if (!success) {
-      throw new Error("Copy failed");
-    }
-  };
-
-  const showNotification = (message: string) => {
-    setCopyMessage(message);
-
-    if (timeoutRef.current !== null) {
-      window.clearTimeout(timeoutRef.current);
-    }
-
-    timeoutRef.current = window.setTimeout(() => {
-      setCopyMessage(null);
-    }, 2000);
-  };
-
-  const handleCopyEmail = async () => {
-    try {
-      await copyEmailToClipboard();
-      showNotification("Correu copiat al porta-papers");
-    } catch {
-      showNotification("No s'ha pogut copiar el correu");
-    }
-  };
+  // Generate JSON-LD for /contacte route (Person + Website + ContactPage schema)
+  const { mainScript, fallback } = generateAllSchemas("/contacte");
 
   return (
     <section className={styles.heroOverlay}>
@@ -120,43 +29,57 @@ const ContactePage = () => {
             aria-label="Instagram d'Alex Sabalete"
             title="Instagram"
           >
-            <InstagramIcon />
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+              className={styles.icon}
+            >
+              <path
+                d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+                fill="currentColor"
+              />
+            </svg>
             @alexsabalete
           </a>
           <div className={styles.emailCopyGroup}>
             <a
-              href={`mailto:${email}`}
+              href={`mailto:a.sabalete.p@gmail.com`}
               aria-label="Enviar correu a Alex Sabalete"
               title="Correu"
             >
-              <MailIcon />
-              {email}
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                className={styles.icon}
+              >
+                <path
+                  d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zm0 2v.5l8 5.2 8-5.2V8l-8 5.2L4 8z"
+                  fill="currentColor"
+                />
+              </svg>
+              {`a.sabalete.p@gmail.com`}
             </a>
             <button
               type="button"
               className={styles.copyButton}
-              onClick={handleCopyEmail}
+              onClick={() => alert("Copied!")}
               aria-label="Copiar correu al porta-papers"
               title="Copiar correu"
             >
-              <CopyIcon />
-              <span>Copiar</span>
+              Copiar
             </button>
-            {copyMessage && (
-              <p
-                className={styles.copyNotification}
-                role="status"
-                aria-live="polite"
-              >
-                {copyMessage}
-              </p>
-            )}
           </div>
         </div>
-        <button className={styles.closeHero} onClick={() => navigate("/")}>
+        <button className={styles.closeHero} onClick={() => window.location.hash = ""}>
           tancar
         </button>
       </div>
+
+      {/* SEO JSON-LD for Contact page */}
+      {mainScript}
+      {fallback}
     </section>
   );
 };

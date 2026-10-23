@@ -1,7 +1,22 @@
-import { Link } from "react-router-dom";
+import { useSEO, generateSEOOptions } from "../hooks/useSEO";
+import { generateNotFoundPageSchema } from "../lib/structuredData";
 import styles from "./NotFoundPage.module.css";
 
 const NotFoundPage = () => {
+  // Generate SEO options for the 404 route with noindex
+  const seoOptions = generateSEOOptions("not-found", undefined, undefined, undefined, true);
+
+  useSEO({
+    title: seoOptions.title,
+    description: seoOptions.description,
+    ogImage: seoOptions.ogImage,
+    canonicalPath: seoOptions.canonicalPath,
+    noindex: seoOptions.noindex,
+  });
+
+  // Generate JSON-LD for 404 route (only Person and Website, no projects)
+  const schema = generateNotFoundPageSchema();
+
   return (
     <main className={styles.notFoundPage}>
       <div className={styles.content}>
@@ -10,10 +25,19 @@ const NotFoundPage = () => {
         <p className={styles.description}>
           La pàgina que cerques no existeix o ha estat moguda.
         </p>
-        <Link to="/" className={styles.homeLink}>
+        <a
+          href="/"
+          className={styles.homeLink}
+          aria-label="Tornar a l'inici"
+        >
           Tornar a l'inici
-        </Link>
+        </a>
       </div>
+
+      {/* SEO JSON-LD for 404 page - only Person and WebSite, no project data */}
+      <script type="application/ld+json">
+        {JSON.stringify(schema, null, 2)}
+      </script>
     </main>
   );
 };
