@@ -8,15 +8,16 @@ const ContactePage = () => {
   // Generate SEO options for the /contacte route
   const seoOptions = generateSEOOptions("/contacte", undefined, undefined, undefined);
 
+  // Generate JSON-LD schema objects for the /contacte route (Person + Website + ContactPage)
+  const schemas = generateAllSchemas("/contacte");
+
   useSEO({
     title: seoOptions.title,
     description: seoOptions.description,
     ogImage: seoOptions.ogImage,
     canonicalPath: seoOptions.canonicalPath,
+    jsonLd: schemas,
   });
-
-  // Generate JSON-LD for /contacte route (Person + Website + ContactPage schema)
-  const { mainScript, fallback } = generateAllSchemas("/contacte");
 
   return (
     <section className={styles.heroOverlay}>
@@ -81,10 +82,6 @@ const ContactePage = () => {
           tancar
         </button>
       </div>
-
-      {/* SEO JSON-LD for Contact page */}
-      {mainScript}
-      {fallback}
     </section>
   );
 };

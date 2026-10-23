@@ -4,6 +4,11 @@ import projectsData from "../data/projects.json";
  * Types for Schema.org JSON-LD generation from Project_Data.
  */
 
+/**
+ * A generic, indexable JSON-LD schema object compatible with `JSON.stringify`.
+ */
+export type JSONLD = Record<string, unknown>;
+
 export interface ProjectSchema {
   "@type": "CreativeWork";
   name: string;
@@ -175,70 +180,32 @@ export function generateNotFoundPageSchema() {
 }
 
 /**
- * Main generator: returns all JSON-LD script content for a given route.
- * Returns an object with mainScript and fallback script content strings.
+ * Main generator: returns all JSON-LD schema objects for a given route.
  *
- * The mainScript includes Person + Website + route-specific ItemList (or About/Contact/NotFound).
- * The fallback includes the route-specific supplementary schema (ItemList for home,
- * AboutPage for /about, ContactPage for /contacte, empty for not-found).
+ * The returned array contains the Person + Website schemas plus the
+ * route-specific schema (ItemList for home, ProfilePage for /about,
+ * ContactPage for /contacte, empty for not-found). These are plain JSON
+ * objects that callers inject into `document.head` as
+ * `<script type="application/ld+json">` elements - they must NOT be
+ * rendered as JSX body content.
  */
 export function generateAllSchemas(
   route: "/" | "/about" | "/contacte" | "not-found"
-) {
+): unknown[] {
   const person = generatePersonSchema();
   const website = generateWebsiteSchema();
 
-  let itemListContent = "";
-  let aboutContent = "";
-  let contactContent = "";
-  let notFoundContent = "";
-
   switch (route) {
     case "/":
-      itemListContent = JSON.stringify(generateItemListSchema(), null, 2);
-      break;
+      return [person, website, generateItemListSchema()];
 
     case "/about":
-      aboutContent = JSON.stringify(generateAboutPageSchema(), null, 2);
-      break;
+      return [person, website, generateAboutPageSchema()];
 
     case "/contacte":
-      contactContent = JSON.stringify(generateContactPageSchema(), null, 2);
-      break;
+      return [person, website, generateContactPageSchema()];
 
     case "not-found":
-      notFoundContent = JSON.stringify(generateNotFoundPageSchema(), null, 2);
-      break;
+      return [person, website];
   }
-
-  // Build the main @graph script - includes person + website + (route-specific) item
-  const mainGraph =
-    route === "/"
-      ? [person, website, { "@type": "ItemList", itemListElement: [] }]
-      : route === "/about"
-      ? [person, website, { "@type": "ProfilePage" }]
-      : route === "/contacte"
-      ? [person, website, { "@type": "ContactPage" }]
-      : [person, website];
-
-  const mainScript = `<script type="application/ld+json">${JSON.stringify(
-    { "@graph": mainGraph },
-    null,
-    2
-  )}</script>`;
-
-  // Return main script + the route-specific supplementary schema content
-  return {
-    mainScript,
-    fallback:
-      route === "/"
-        ? `<script type="application/ld+json">${itemListContent}</script>`
-        : route === "/about"
-        ? `<script type="application/ld+json">${aboutContent}</script>`
-        : route === "/contacte"
-        ? `<script type="application/ld+json">${contactContent}</script>`
-        : route === "not-found"
-        ? `<script type="application/ld+json">${notFoundContent}</script>`
-        : "",
-  };
 }

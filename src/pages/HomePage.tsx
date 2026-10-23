@@ -11,15 +11,16 @@ const HomePage = () => {
   // Generate SEO options for the home route
   const seoOptions = generateSEOOptions("/", undefined, undefined, undefined);
 
+  // Generate JSON-LD schema objects for the home page
+  const schemas = generateAllSchemas("/");
+
   useSEO({
     title: seoOptions.title,
     description: seoOptions.description,
     ogImage: seoOptions.ogImage,
     canonicalPath: seoOptions.canonicalPath,
+    jsonLd: schemas,
   });
-
-  // Generate JSON-LD schemas for the home page
-  const { mainScript, fallback } = generateAllSchemas("/");
 
   return (
     <main className={styles.mainContent}>
@@ -29,10 +30,6 @@ const HomePage = () => {
           <ProjectCard key={project.id || project.title} {...project} />
         ))}
       </div>
-
-      {/* SEO JSON-LD: main script (Person + Website + ItemList schema) + ItemList details */}
-      {mainScript}
-      {fallback}
     </main>
   );
 };

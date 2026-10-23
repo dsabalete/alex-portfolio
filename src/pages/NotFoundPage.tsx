@@ -1,10 +1,13 @@
 import { useSEO, generateSEOOptions } from "../hooks/useSEO";
-import { generateNotFoundPageSchema } from "../lib/structuredData";
+import { generateAllSchemas } from "../lib/structuredData";
 import styles from "./NotFoundPage.module.css";
 
 const NotFoundPage = () => {
   // Generate SEO options for the 404 route with noindex
   const seoOptions = generateSEOOptions("not-found", undefined, undefined, undefined, true);
+
+  // Generate JSON-LD schema objects for the 404 route (only Person and Website)
+  const schemas = generateAllSchemas("not-found");
 
   useSEO({
     title: seoOptions.title,
@@ -12,10 +15,8 @@ const NotFoundPage = () => {
     ogImage: seoOptions.ogImage,
     canonicalPath: seoOptions.canonicalPath,
     noindex: seoOptions.noindex,
+    jsonLd: schemas,
   });
-
-  // Generate JSON-LD for 404 route (only Person and Website, no projects)
-  const schema = generateNotFoundPageSchema();
 
   return (
     <main className={styles.notFoundPage}>
@@ -33,11 +34,6 @@ const NotFoundPage = () => {
           Tornar a l'inici
         </a>
       </div>
-
-      {/* SEO JSON-LD for 404 page - only Person and WebSite, no project data */}
-      <script type="application/ld+json">
-        {JSON.stringify(schema, null, 2)}
-      </script>
     </main>
   );
 };

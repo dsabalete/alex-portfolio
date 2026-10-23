@@ -10,6 +10,7 @@ export interface SEOOptions {
   ogImage?: string; // Open Graph image per route
   canonicalPath?: string; // Path to append to site URL for canonical/og:url
   noindex?: boolean; // Whether to add noindex robots directive
+  jsonLd?: unknown[]; // JSON-LD schema objects to inject into <head>
 }
 
 /**
@@ -115,6 +116,7 @@ export function useSEO(options: SEOOptions = {}) {
     ogImage,
     canonicalPath,
     noindex,
+    jsonLd,
   } = options;
 
   useEffect(() => {
@@ -219,5 +221,23 @@ export function useSEO(options: SEOOptions = {}) {
     // 12. Preserve static tags from index.html (og:type, og:site_name, etc.)
     // The hook does not touch these; they remain as defined in index.html.
 
-  }, [title, description, ogImage, canonicalPath, noindex]);
+    // 13. JSON-LD structured data: inject <script type="application/ld+json">
+    // into document.head, updating in place to avoid duplicates. Each schema
+    // object becomes its own script element keyed by its JSON content so that
+    // re-renders and route changes replace rather than accumulate.
+    const ldSelector = 'script[type="application/ld+json"][data-seo-ld]';
+    const existingScripts = document.querySelectorAll(ldSelector);
+    existingScripts.forEach((el) => el.remove());
+
+    if (jsonLd && jsonLd.length > 0) {
+      jsonLd.forEach((schema) => {
+        const scriptEl = document.createElement("script");
+        scriptEl.setAttribute("type", "application/ld+json");
+        scriptEl.setAttribute("data-seo-ld", "true");
+        scriptEl.textContent = JSON.stringify(schema, null, 2);
+        document.head.appendChild(scriptEl);
+      });
+    }
+
+  }, [title, description, ogImage, canonicalPath, noindex, jsonLd]);
 }
